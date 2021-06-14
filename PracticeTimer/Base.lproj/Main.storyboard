@@ -98,6 +98,11 @@
                                     <action selector="CloseRecords:" destination="dMk-yT-SDN" eventType="touchUpInside" id="t6U-PW-o64"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6zn-JG-dBT">
+                                <rect key="frame" x="49" y="107" width="315" height="449"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dfj-dE-EaG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
