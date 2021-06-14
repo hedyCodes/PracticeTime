@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,13 +32,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OpE-yl-vvr" userLabel="Percent Label">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Percent complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OpE-yl-vvr" userLabel="Percent Label">
                                 <rect key="frame" x="37" y="105" width="231" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="test 123" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mRA-Dh-8kP">
+                                <rect key="frame" x="38" y="645" width="340" height="188"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gt5-sV-zpE">
+                                <rect key="frame" x="346" y="38" width="30" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" systemColor="systemPurpleColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="ViewRecords:" destination="BYZ-38-t0r" eventType="touchUpInside" id="87G-jg-g8B"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -46,22 +64,60 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oEk-zF-Udy" secondAttribute="trailing" constant="25" id="V8m-wB-7pa"/>
                             <constraint firstItem="oEk-zF-Udy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="d9V-vI-LyM"/>
                             <constraint firstItem="oEk-zF-Udy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="mTD-3i-PnD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mRA-Dh-8kP" secondAttribute="bottom" constant="30" id="rfh-pK-cAU"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="MinutesLabel" destination="4Aa-s1-8v3" id="l4z-Qj-07g"/>
-                        <outlet property="PercentLabel" destination="OpE-yl-vvr" id="lkz-p0-gjt"/>
-                        <outlet property="ProgressBar" destination="oEk-zF-Udy" id="UAC-XH-t6Z"/>
+                        <outlet property="AddButton" destination="Gt5-sV-zpE" id="wDc-Bz-z4x"/>
+                        <outlet property="CompletedTextView" destination="mRA-Dh-8kP" id="7ti-ya-8bp"/>
+                        <outlet property="MinutesLabel" destination="4Aa-s1-8v3" id="CIl-AJ-RHF"/>
+                        <outlet property="PercentLabel" destination="OpE-yl-vvr" id="4vW-7a-y97"/>
+                        <outlet property="ProgressBar" destination="oEk-zF-Udy" id="9Ai-cH-iXT"/>
+                        <segue destination="dMk-yT-SDN" kind="presentation" identifier="recordsSegue" id="vfO-E8-T8J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="71.651785714285708"/>
         </scene>
+        <!--Record View Controller-->
+        <scene sceneID="Enq-el-YFd">
+            <objects>
+                <viewController id="dMk-yT-SDN" customClass="RecordViewController" customModule="PracticeTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E4b-HI-At1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ul8-79-4U1">
+                                <rect key="frame" x="354" y="30" width="30" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" systemColor="systemPurpleColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="CloseRecords:" destination="dMk-yT-SDN" eventType="touchUpInside" id="t6U-PW-o64"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="dfj-dE-EaG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dfj-dE-EaG" firstAttribute="trailing" secondItem="ul8-79-4U1" secondAttribute="trailing" constant="30" id="501-OM-w1K"/>
+                            <constraint firstItem="ul8-79-4U1" firstAttribute="top" secondItem="dfj-dE-EaG" secondAttribute="top" constant="30" id="B8m-nB-Pkt"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rPR-xr-i5t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="866.66666666666674" y="61.607142857142854"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

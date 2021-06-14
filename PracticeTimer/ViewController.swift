@@ -26,14 +26,17 @@ var practices: [Practice] = [
     @IBOutlet weak var PercentLabel: UILabel!
     @IBOutlet weak var MinutesLabel: UILabel!
     @IBOutlet weak var ProgressBar: UIProgressView!
+    @IBOutlet weak var CompletedTextView: UITextView!
+    @IBOutlet weak var AddButton: UIButton!
+    
     var progressTimer: Timer!
     var timerIsRunning = false
     var totalTimeInSeconds = 0
     let progress = Progress()
-
+    var selectedPracticeIndex = 0
+    
     @objc func updateProgressView() {
 
-        print("called into updateProgressView")
         DispatchQueue.global().async {
               DispatchQueue.main.async { () -> Void in
                 print("+++++++++++++++++++++++++++")
@@ -41,11 +44,16 @@ var practices: [Practice] = [
                 self.timerIsRunning  = true
                 self.ProgressBar.progress += 0.1
                 self.ProgressBar.setProgress(Float(self.progress.fractionCompleted), animated: true)
-                print("minutes label \(self.totalTimeInSeconds*(Int(self.progress.fractionCompleted*Double(self.totalTimeInSeconds)))) seconds left")
                 let secondsLeft = self.totalTimeInSeconds - (Int(self.progress.fractionCompleted*Double(self.totalTimeInSeconds)))
-                self.MinutesLabel.text = "\(secondsLeft/60) minutes \(secondsLeft%60) left"
-                self.PercentLabel.text = "percent completed \(Int(self.progress.fractionCompleted*Double(self.totalTimeInSeconds))) %"
+                self.MinutesLabel.text = "\(secondsLeft/60) mins \(secondsLeft%60) secs left to go"
+                print("percent completed \(Int(self.progress.fractionCompleted*Double(self.totalTimeInSeconds))/2)")
+                self.PercentLabel.text = "percent completed \(Int(self.progress.fractionCompleted*100)) %"
                 print("+++++++++++++++++++++++++++")
+                if (self.progress.fractionCompleted == Double(1.0)) {
+                    self.progressTimer.invalidate()
+                    print("finished \(self.practices[self.selectedPracticeIndex].desc) \n")
+                    self.CompletedTextView.text! += "finished \(self.practices[self.selectedPracticeIndex].desc) \n"
+                }
               }
         }
     }
@@ -54,25 +62,29 @@ var practices: [Practice] = [
         // pause or reset timer when button clicked
         if (timerIsRunning) {
             progressTimer.invalidate()
-            sender.backgroundColor = UIColor.lightGray
         }
         // reset progressbar
         print("called startTimer")
         ProgressBar.progress = 0.0
         timerIsRunning = true
-        totalTimeInSeconds = sender.tag * 60
+        selectedPracticeIndex = sender.tag
+        totalTimeInSeconds = practices[selectedPracticeIndex].time * 60
         progress.totalUnitCount = Int64(totalTimeInSeconds)
         progress.completedUnitCount = 0
-        print("setting time progress to \(totalTimeInSeconds) seconds")
         MinutesLabel.text = "\(String(totalTimeInSeconds/60)) minutes to go"
         
         let customLightGreenColor = UIColor(red: CGFloat(144/255.0), green: CGFloat(219/255.0), blue: CGFloat(4/255.0), alpha: 1.0)
         sender.backgroundColor = customLightGreenColor
         
         self.progressTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateProgressView), userInfo: nil, repeats: true)
+        
 
     }
-    
+        
+    @IBAction func ViewRecords(_ sender: Any) {
+        performSegue(withIdentifier: "recordsSegue", sender: self)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         ProgressBar.layer.cornerRadius = 10
@@ -87,6 +99,10 @@ var practices: [Practice] = [
         let height = 35
         let width = 200
         
+        selectedPracticeIndex = 0
+
+        overrideUserInterfaceStyle = .dark
+        
         for practice in practices {
             
             // create label for the practice action
@@ -94,6 +110,7 @@ var practices: [Practice] = [
             label.textColor = UIColor.black
             label.frame = CGRect(x: xCoordinate, y: yCoordinate, width: width, height: height)
             label.text = practice.desc
+            label.textColor = .white
             self.view.addSubview(label)
             
             // create button for the practice timer
@@ -107,8 +124,12 @@ var practices: [Practice] = [
             button.layer.borderWidth = 1
             button.layer.borderColor = UIColor.black.cgColor
             button.setTitle("Go", for: .normal)
-            button.tag = Int(practice.time)
+            button.tag = selectedPracticeIndex
             self.view.addSubview(button)
+
+            self.CompletedTextView.text! += "TEST \(practices[selectedPracticeIndex].desc) \n"
+
+            selectedPracticeIndex += 1
             
         }
         

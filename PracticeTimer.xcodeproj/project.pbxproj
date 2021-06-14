@@ -16,6 +16,7 @@
 		E87F34F6266B006C00DF9FBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E87F34F4266B006C00DF9FBC /* LaunchScreen.storyboard */; };
 		E87F3501266B006C00DF9FBC /* PracticeTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87F3500266B006C00DF9FBC /* PracticeTimerTests.swift */; };
 		E87F350C266B006C00DF9FBC /* PracticeTimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87F350B266B006C00DF9FBC /* PracticeTimerUITests.swift */; };
+		E8D21A5C2676F0B1002B5012 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D21A5B2676F0B1002B5012 /* RecordViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		E87F3507266B006C00DF9FBC /* PracticeTimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PracticeTimerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E87F350B266B006C00DF9FBC /* PracticeTimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeTimerUITests.swift; sourceTree = "<group>"; };
 		E87F350D266B006C00DF9FBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8D21A5B2676F0B1002B5012 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				E87F34E6266B006900DF9FBC /* AppDelegate.swift */,
+				E8D21A5B2676F0B1002B5012 /* RecordViewController.swift */,
 				E87F34E8266B006900DF9FBC /* SceneDelegate.swift */,
 				E87F34EA266B006900DF9FBC /* ViewController.swift */,
 				E87F34EC266B006900DF9FBC /* Main.storyboard */,
@@ -263,6 +266,7 @@
 			files = (
 				E87F34EB266B006900DF9FBC /* ViewController.swift in Sources */,
 				E87F34E7266B006900DF9FBC /* AppDelegate.swift in Sources */,
+				E8D21A5C2676F0B1002B5012 /* RecordViewController.swift in Sources */,
 				E87F34F1266B006900DF9FBC /* PracticeTimer.xcdatamodeld in Sources */,
 				E87F34E9266B006900DF9FBC /* SceneDelegate.swift in Sources */,
 			);
@@ -441,6 +445,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9HS4W6K5F5;
 				INFOPLIST_FILE = PracticeTimer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -459,6 +464,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9HS4W6K5F5;
 				INFOPLIST_FILE = PracticeTimer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
